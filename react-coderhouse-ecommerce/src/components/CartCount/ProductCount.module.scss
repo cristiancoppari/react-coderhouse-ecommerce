@@ -1,0 +1,17 @@
+.productCount {
+  width: 10rem;
+
+  .productCountControllers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      margin: 0 1rem;
+    }
+  }
+
+  button {
+    margin-top: 1rem;
+  }
+}

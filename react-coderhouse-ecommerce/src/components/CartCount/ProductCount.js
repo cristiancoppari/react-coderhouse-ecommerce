@@ -3,35 +3,38 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import classes from "./ProductCount.module.scss";
 
-const ProductCount = ({ initial, stock, onAdd, onRemove }) => {
+const ProductCount = ({ initial, stock, onAdd }) => {
   const [items, setItems] = useState(initial);
   // console.log(initial);
+  // console.log(stock);
 
-  // const onAddHandler = (initial, stock, items, setItems) => {
-  //   if (initial < stock) {
-  //     setItems(items + 1);
-  //   } else {
-  //     alert("No podes agregar mas productos porque no hay mas stock");
-  //   }
-  // }
+  const onAddItemHandler = () => {
+    if (items < stock) {
+      setItems(items + 1);
+    } else {
+      alert("No podes agregar mas productos porque no hay mas stock");
+    }
+  }
 
-  // const onRemoveHandler = (initial, stock, items, setItems) => {
-  //   if (initial > 0) {
-  //     setItems(items - 1);
-  //   } else {
-  //     alert("No podes restar mas productos porque llegaste a 0");
-  //   }
-  // }
+  const onRemoveItemHandler = () => {
+    if (items > 0) {
+      setItems(items - 1);
+    } else {
+      alert("No podes restar mas productos porque llegaste a 0");
+    }
+  }
 
   return (
-    <div className={classes.cartCount}>
+    <div className={classes.productCount}>
       <p>Producto</p>
 
-      <div className={classes.cartCountControllers}>
-        <Button variant="danger" onClick={() => onAdd(initial, stock, items, setItems)}>-</Button>
+      <div className={classes.productCountControllers}>
+        <Button variant="danger" onClick={onRemoveItemHandler}>-</Button>
         <p>{items}</p>
-        <Button variant="success" onClick={() => onRemove(initial, items, setItems)}>+</Button>
+        <Button variant="success" onClick={onAddItemHandler}>+</Button>
       </div>
+
+      <Button variant="primary" onClick={() => onAdd(items)}>Agregar al carrito</Button>
     </div>
   )
 }

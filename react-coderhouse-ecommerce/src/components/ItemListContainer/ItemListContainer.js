@@ -4,19 +4,11 @@ import ProductCount from '../CartCount/ProductCount';
 import classes from "./ItemListContainer.module.scss";
 
 const ItemListContainer = () => {
-  const onAddHandler = (initial, stock, items, setItems) => {
-    if (initial > stock) {
-      setItems(items + 1);
+  const onAddHandler = (items) => {
+    if (items) {
+      alert("Agregaste un producto al carrito");
     } else {
-      alert("No podes agregar mas productos porque no hay mas stock");
-    }
-  }
-
-  const onRemoveHandler = (initial, items, setItems) => {
-    if (initial > 0) {
-      setItems(items--);
-    } else {
-      alert("No podes restar mas productos porque llegaste a 0");
+      alert("Debes agregar 1 producto carrito")
     }
   }
 
@@ -25,7 +17,7 @@ const ItemListContainer = () => {
       <h2>ItemListContainer</h2>
       <p>Aqui va a ir una lista con todos los productos</p>
 
-      <ProductCount initial={1} stock={10} onAdd={onAddHandler} onRemove={onRemoveHandler}></ProductCount>
+      <ProductCount initial={1} stock={10} onAdd={onAddHandler}></ProductCount>
     </Container>
   )
 }
