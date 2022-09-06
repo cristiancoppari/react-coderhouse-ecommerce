@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import ProductCount from '../CartCount/ProductCount';
 import ItemList from "../ItemList/ItemList";
-import { products as dataProducts } from "../../mock/products";
+import { getProducts } from "../../helpers/helpers";
 import classes from "./ItemListContainer.module.scss";
+// import { products as dataProducts } from "../../mock/products";
 
 const ItemListContainer = () => {
   const onAddHandler = (items) => {
@@ -15,18 +16,13 @@ const ItemListContainer = () => {
     }
   }
 
-  console.log(dataProducts);
+  // console.log(dataProducts);
 
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const getProducts = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(dataProducts);
-      }, 2000);
-    });
 
-    getProducts
+    getProducts()
       .then((data) => {
         setItems(data)
       })
@@ -35,13 +31,11 @@ const ItemListContainer = () => {
       })
   }, []);
 
-
   return (
     <Container className={classes.itemListContainer}>
       <h2>ItemListContainer</h2>
-      <p>Aqui va a ir una lista con todos los productos</p>
 
-      <ProductCount initial={1} stock={10} onAdd={onAddHandler}></ProductCount>
+      {/* <ProductCount initial={1} stock={10} onAdd={onAddHandler}></ProductCount> */}
 
       <ItemList items={items}></ItemList>
     </Container>

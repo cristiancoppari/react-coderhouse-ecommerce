@@ -26,7 +26,7 @@ const ProductCount = ({ initial, stock, onAdd }) => {
 
   return (
     <div className={classes.productCount}>
-      <p>Producto</p>
+      {/* <p>Producto</p> */}
 
       <div className={classes.productCountControllers}>
         <Button variant="danger" onClick={onRemoveItemHandler}>-</Button>

@@ -1,0 +1,15 @@
+.itemDetail {
+  display: flex;
+
+  .itemDetailImage {
+    flex: 1 1 50%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .itemDetailContent {
+    flex: 1 1 50%;
+  }
+}
