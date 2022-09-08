@@ -8,7 +8,7 @@ const ItemCount = ({ initial, stock, onAdd }) => {
 
   const onAddItemHandler = () => {
     if (items < stock) {
-      setItems(items + 1);
+      setItems((prevState) => prevState + 1);
     } else {
       alert("No podes agregar mas productos porque no hay mas stock");
     }
@@ -16,7 +16,7 @@ const ItemCount = ({ initial, stock, onAdd }) => {
 
   const onRemoveItemHandler = () => {
     if (items > 0) {
-      setItems(items - 1);
+      setItems((prevState) => prevState - 1);
     } else {
       alert("No podes restar mas productos porque llegaste a 0");
     }
