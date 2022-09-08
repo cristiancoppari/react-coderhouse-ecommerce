@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 import Container from "react-bootstrap/Container";
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { getItem } from '../../helpers/helpers';
@@ -7,8 +8,10 @@ import { getItem } from '../../helpers/helpers';
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState("");
 
+  const { id } = useParams();
+
   useEffect(() => {
-    getItem(2)
+    getItem(Number(id))
       .then((data) => {
         setProduct(data);
       })

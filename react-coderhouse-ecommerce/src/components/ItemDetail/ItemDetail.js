@@ -1,10 +1,18 @@
 import React from 'react';
 import Container from "react-bootstrap/Container";
-import ProductCount from '../CartCount/ProductCount';
+import ItemCount from '../ItemCount/ItemCount';
 
 import classes from "./ItemDetail.module.scss";
 
 const ItemDetail = ({ item }) => {
+  const onAddHandler = (items) => {
+    if (items) {
+      alert("Agregaste un producto al carrito");
+    } else {
+      alert("Debes agregar 1 producto carrito")
+    }
+  }
+
   return (
     <Container>
       <h1>ItemDetail</h1>
@@ -20,7 +28,7 @@ const ItemDetail = ({ item }) => {
           <p>{item.price}</p>
           <p>{item.stock}</p>
 
-          <ProductCount initial={1} stock={item.stock}></ProductCount>
+          <ItemCount initial={1} stock={item.stock} onAdd={onAddHandler}></ItemCount>
         </div>
       </div>
 

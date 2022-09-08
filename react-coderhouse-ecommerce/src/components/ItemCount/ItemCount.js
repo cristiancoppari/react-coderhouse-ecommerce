@@ -1,12 +1,10 @@
 import React from 'react';
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
-import classes from "./ProductCount.module.scss";
+import classes from "./ItemCount.module.scss";
 
-const ProductCount = ({ initial, stock, onAdd }) => {
+const ItemCount = ({ initial, stock, onAdd }) => {
   const [items, setItems] = useState(initial);
-  // console.log(initial);
-  // console.log(stock);
 
   const onAddItemHandler = () => {
     if (items < stock) {
@@ -26,7 +24,6 @@ const ProductCount = ({ initial, stock, onAdd }) => {
 
   return (
     <div className={classes.productCount}>
-      {/* <p>Producto</p> */}
 
       <div className={classes.productCountControllers}>
         <Button variant="danger" onClick={onRemoveItemHandler}>-</Button>
@@ -39,4 +36,4 @@ const ProductCount = ({ initial, stock, onAdd }) => {
   )
 }
 
-export default ProductCount
+export default ItemCount

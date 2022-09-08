@@ -44,4 +44,22 @@ export const products = [
     category: "condimentos",
     stock: 25
   },
+  {
+    id: 6,
+    title: "Sweet Chilifire Pack",
+    price: 500,
+    pictureUrl: "https://cdn.shopify.com/s/files/1/0197/7080/products/SweetChilifire_4aadfbdd-cb90-4809-ab2d-56ff8ca31cbb_800x.png",
+    description: "Does your usual BBQ rub only have 4 or 5 ingredients? Ours has 18, including 4 distinct chiles. Perfect for smoking, grilling, braising, roasting or sprinkled onto popcorn straight out of the container.",
+    category: "packs",
+    stock: 25
+  },
+  {
+    id: 7,
+    title: "Sweet Chilifire Ultra Pack",
+    price: 1000,
+    pictureUrl: "https://cdn.shopify.com/s/files/1/0197/7080/products/SweetChilifire_4aadfbdd-cb90-4809-ab2d-56ff8ca31cbb_800x.png",
+    description: "Does your usual BBQ rub only have 4 or 5 ingredients? Ours has 18, including 4 distinct chiles. Perfect for smoking, grilling, braising, roasting or sprinkled onto popcorn straight out of the container.",
+    category: "packs",
+    stock: 10
+  },
 ]

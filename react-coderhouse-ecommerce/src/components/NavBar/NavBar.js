@@ -3,6 +3,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from "../CartWidget/CartWidget";
+import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import classes from "../NavBar/NavBar.module.scss";
 
 function NavBar() {
@@ -13,18 +15,30 @@ function NavBar() {
       </Container>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">Ecommerce</Navbar.Brand>
+          <Navbar.Brand>
+            <Link to="/">Ecommerce</Link>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Nosotros</Nav.Link>
-              <NavDropdown title="Productos" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Producto 1</NavDropdown.Item>
+            <Nav className="me-auto" as="ul">
+              {/* <LinkContainer to="/">
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/nosotros">
+                <Nav.Link>Nosotros</Nav.Link>
+              </LinkContainer> */}
+              <NavDropdown title="Categorias" id="basic-nav-dropdown">
+                <LinkContainer to="/category/condimentos">
+                  <Nav.Link>Condimentos</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to="/category/packs">
+                  <Nav.Link>Packs</Nav.Link>
+                </LinkContainer>
+                {/* <NavDropdown.Item href="#action/3.1">Producto 1</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Producto 2
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Producto 3</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Producto 3</NavDropdown.Item> */}
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
