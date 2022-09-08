@@ -5,7 +5,7 @@ import Item from "../Item/Item";
 
 // import { products as dataProducts } from "../../mock/products";
 
-import classes from "./ItemList.module.scss";
+// import classes from "./ItemList.module.scss";
 
 const ItemList = ({ items }) => {
 
