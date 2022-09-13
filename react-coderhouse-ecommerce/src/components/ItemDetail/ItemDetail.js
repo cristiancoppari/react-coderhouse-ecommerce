@@ -1,15 +1,21 @@
 import React from 'react';
+import { useState } from 'react';
 import Container from "react-bootstrap/Container";
 import ItemCount from '../ItemCount/ItemCount';
+import Button from "react-bootstrap/Button";
+import { LinkContainer } from "react-router-bootstrap";
 
 import classes from "./ItemDetail.module.scss";
 
 const ItemDetail = ({ item }) => {
+  const [quantity, setQuantity] = useState(0);
+
   const onAddHandler = (items) => {
     if (items) {
-      alert("Agregaste un producto al carrito");
+      alert(`Agregaste ${items} producto al carrito`);
+      setQuantity(items);
     } else {
-      alert("Debes agregar 1 producto carrito")
+      alert("Debes agregar 1 producto carrito");
     }
   }
 
@@ -28,7 +34,14 @@ const ItemDetail = ({ item }) => {
           <p>{item.price}</p>
           <p>{item.stock}</p>
 
-          <ItemCount initial={1} stock={item.stock} onAdd={onAddHandler}></ItemCount>
+          {quantity
+            ?
+            <LinkContainer to={`/cart`}>
+              <Button>Ir al carrito</Button>
+            </LinkContainer>
+            :
+            <ItemCount initial={1} stock={item.stock} onAdd={onAddHandler}></ItemCount>
+          }
         </div>
       </div>
 

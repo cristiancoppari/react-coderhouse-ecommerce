@@ -8,7 +8,7 @@ import { getItem } from '../../helpers/helpers';
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState("");
-  const [isLoading, setIsLoading] = useState(null)
+  const [isLoading, setIsLoading] = useState(false);
 
   const { id } = useParams();
 
@@ -24,7 +24,11 @@ const ItemDetailContainer = () => {
       })
       .finally(() => {
         setIsLoading(false);
-      })
+      });
+
+    return () => {
+      setIsLoading(false);
+    }
   }, [id]);
 
   return (

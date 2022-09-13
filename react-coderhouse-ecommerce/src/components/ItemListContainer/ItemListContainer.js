@@ -10,7 +10,7 @@ import classes from "./ItemListContainer.module.scss";
 const ItemListContainer = () => {
   // State
   const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Params
   const { categoryId } = useParams();
@@ -32,6 +32,7 @@ const ItemListContainer = () => {
       })
 
     return () => {
+      setIsLoading(false);
       console.log("clean up");
     }
   }, [categoryId]);
