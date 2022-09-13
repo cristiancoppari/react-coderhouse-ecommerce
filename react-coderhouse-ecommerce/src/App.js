@@ -17,6 +17,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
 
         {/* TODO: Agregar pagina de error */}
+        {/* Si entro a /category/sarasa no funciona */}
         {/* <Route path="*" element="Hubo un error al querer cargar la pagina. No se encuentra." /> */}
       </Routes>
     </BrowserRouter>
