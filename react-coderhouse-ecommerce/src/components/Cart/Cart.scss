@@ -1,0 +1,21 @@
+.cart-item {
+  display: flex;
+
+  img {
+    width: 3rem;
+  }
+
+  &__detail {
+    display: flex;
+
+    p {
+      margin-right: 1rem;
+    }
+  }
+
+  &__controls {
+    display: flex;
+
+    gap: 0.5rem;
+  }
+}

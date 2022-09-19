@@ -15,10 +15,10 @@ const ItemCount = ({ initial, stock, onAdd }) => {
   }
 
   const onRemoveItemHandler = () => {
-    if (items > 0) {
+    if (items > 1) {
       setItems((prevState) => prevState - 1);
     } else {
-      alert("No podes restar mas productos porque llegaste a 0");
+      alert("No podes restar mas productos porque sino no podes agregar nada al carrito!");
     }
   }
 

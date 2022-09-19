@@ -1,23 +1,30 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Container from "react-bootstrap/Container";
 import ItemCount from '../ItemCount/ItemCount';
 import Button from "react-bootstrap/Button";
+import { CartContext } from '../../context/CartContext';
 import { LinkContainer } from "react-router-bootstrap";
 
 import classes from "./ItemDetail.module.scss";
 
 const ItemDetail = ({ item }) => {
   const [quantity, setQuantity] = useState(0);
+  const { addItem, removeItem, clear } = useContext(CartContext);
 
-  const onAddHandler = (items) => {
-    if (items) {
-      alert(`Agregaste ${items} producto al carrito`);
-      setQuantity(items);
+  const onAddHandler = (quantity) => {
+    if (quantity) {
+      // alert(`Agregaste ${items} producto al carrito`);
+      setQuantity(() => quantity);
+      addItem(item, quantity);
     } else {
       alert("Debes agregar 1 producto carrito");
     }
   }
+
+  // const onAddToCartHandler = () => {
+  //   addItem(item, quantity);
+  // }
 
   return (
     <Container>
@@ -40,7 +47,9 @@ const ItemDetail = ({ item }) => {
               <Button>Ir al carrito</Button>
             </LinkContainer>
             :
-            <ItemCount initial={1} stock={item.stock} onAdd={onAddHandler}></ItemCount>
+            <>
+              <ItemCount initial={1} stock={item.stock} onAdd={onAddHandler}></ItemCount>
+            </>
           }
         </div>
       </div>

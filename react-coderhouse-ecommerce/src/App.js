@@ -3,24 +3,27 @@ import NavBar from "./components/NavBar/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
-// import Cart from "./components/Cart/Cart";
+import CartContextProvider from "./context/CartContext";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
+    <CartContextProvider>
+      <BrowserRouter>
+        <NavBar />
 
-      <Routes>
-        <Route path="/" element={<ItemListContainer />} />
-        <Route path="/category/:categoryId" element={<ItemListContainer />} />
-        <Route path="/item/:id" element={<ItemDetailContainer />} />
-        <Route path="/cart" element={<div>Carrito</div>} />
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/category/:categoryId" element={<ItemListContainer />} />
+          <Route path="/item/:id" element={<ItemDetailContainer />} />
+          <Route path="/cart" element={<Cart />} />
 
-        {/* TODO: Agregar pagina de error */}
-        {/* Si entro a /category/sarasa no funciona */}
-        {/* <Route path="*" element="Hubo un error al querer cargar la pagina. No se encuentra." /> */}
-      </Routes>
-    </BrowserRouter>
+          {/* TODO: Agregar pagina de error */}
+          {/* Si entro a /category/sarasa no funciona */}
+          <Route path="*" element="Hubo un error al querer cargar la pagina. No se encuentra." />
+        </Routes>
+      </BrowserRouter>
+    </CartContextProvider>
   );
 }
 
