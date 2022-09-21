@@ -8,7 +8,7 @@ import { CartContext } from "../../context/CartContext";
 import "./Cart.scss";
 
 const Cart = () => {
-  const { cart, increaseQuantityByOne, decreaseQuantityByOne, removeItem, clear } = useContext(CartContext);
+  const { cart, increaseQuantityByOne, decreaseQuantityByOne, removeItem, clear, getCartTotalPrice } = useContext(CartContext);
 
   const increaseHandler = (product) => {
     increaseQuantityByOne(product);
@@ -53,6 +53,8 @@ const Cart = () => {
         })
         }
 
+        <p><strong>Total:</strong> ${getCartTotalPrice()}</p>
+
         <Button variant="dark" onClick={() => clear()}>Borrar carrito</Button>
       </div>
     )
@@ -69,7 +71,9 @@ const Cart = () => {
         <div>
           <h2>No agregaste productos al carrito</h2>
 
-          {/* <Button>Ir a la tienda</Button> */}
+          <LinkContainer to="/">
+            <Button>Ir a la tienda</Button>
+          </LinkContainer>
         </div>
       }
     </Container>

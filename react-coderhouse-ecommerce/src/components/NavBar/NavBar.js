@@ -1,17 +1,25 @@
 import Container from 'react-bootstrap/Container';
+import { useContext } from "react";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from "../CartWidget/CartWidget";
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
+import { CartContext } from "../../context/CartContext";
 import classes from "../NavBar/NavBar.module.scss";
 
 function NavBar() {
+  const { cart } = useContext(CartContext);
+
   return (
     <>
       <Container className={classes.topNavbar}>
-        <CartWidget />
+        {cart.length > 0 && <LinkContainer to="/cart">
+          <span>
+            <CartWidget />
+          </span>
+        </LinkContainer>}
       </Container>
       <Navbar bg="light" expand="lg">
         <Container>
