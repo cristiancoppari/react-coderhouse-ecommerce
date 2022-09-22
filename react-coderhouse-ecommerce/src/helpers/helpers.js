@@ -1,29 +1,24 @@
 import { products as dataProducts } from "../mock/products";
+import { collection, getDocs, query, where, doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase/config";
 
 export const getProducts = (searchParam = false) => {
-  if (searchParam) {
-    return new Promise((res, rej) => {
-      setTimeout(() => {
-        const productsFiltered = dataProducts.filter((product) => product.category === searchParam)
+  const productsCollection = collection(db, "products");
 
-        res(productsFiltered)
-      }, 2000)
-    })
-  } else {
-    return new Promise((res, rej) => {
-      setTimeout(() => {
-        res(dataProducts);
-      }, 2000);
-    })
-  }
+  const collectionRef = searchParam ? query(productsCollection, where("category", "==", searchParam)) : productsCollection;
+
+  return getDocs(collectionRef);
 };
 
 export const getItem = (id) => {
-  return new Promise((res, rej) => {
-    setTimeout(() => {
-      const product = dataProducts.find((item) => id === Number(item.id));
+  const productRef = doc(db, "products", id);
 
-      res(product);
-    }, 2000);
-  })
+  return getDoc(productRef);
+  // return new Promise((res, rej) => {
+  //   setTimeout(() => {
+  //     const product = dataProducts.find((item) => id === Number(item.id));
+
+  //     res(product);
+  //   }, 2000);
+  // })
 }

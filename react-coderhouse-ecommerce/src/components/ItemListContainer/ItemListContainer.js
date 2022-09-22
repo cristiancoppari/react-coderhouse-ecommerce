@@ -20,7 +20,13 @@ const ItemListContainer = () => {
     setIsLoading(true);
 
     getProducts(categoryId)
-      .then((data) => {
+      .then((snapshot) => {
+        const data = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            ...doc.data()
+          }
+        })
         setItems(data);
         console.log("getProducts");
       })

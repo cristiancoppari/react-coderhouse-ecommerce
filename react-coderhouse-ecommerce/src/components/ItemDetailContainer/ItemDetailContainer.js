@@ -15,9 +15,15 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    getItem(Number(id))
-      .then((data) => {
-        setProduct(data);
+    getItem(id)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const data = {
+            id: snapshot.id,
+            ...snapshot.data()
+          }
+          setProduct(data);
+        }
       })
       .catch((error) => {
         console.log(error);
