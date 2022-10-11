@@ -16,14 +16,8 @@ const ItemDetailContainer = () => {
     setIsLoading(true);
 
     getItem(id)
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          const data = {
-            id: snapshot.id,
-            ...snapshot.data()
-          }
-          setProduct(data);
-        }
+      .then((data) => {
+        setProduct(data);
       })
       .catch((error) => {
         console.log(error);
@@ -32,18 +26,17 @@ const ItemDetailContainer = () => {
         setIsLoading(false);
       });
 
-    return () => {
-      setIsLoading(false);
-    }
+    // return () => {
+    //   setIsLoading(false);
+    // }
   }, [id]);
 
   return (
     <Container>
-      <h2>ItemDetailContainer</h2>
 
       {isLoading
         ?
-        <Spinner animation="border" role="status" />
+        <Spinner animation="border" role="status" className="d-block mx-auto my-5" />
         :
         <ItemDetail item={product}></ItemDetail>
       }

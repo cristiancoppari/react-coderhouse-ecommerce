@@ -9,7 +9,7 @@ const CartWidget = () => {
   const { getCartTotalQuantity } = useContext(CartContext);
 
   return (
-    <Button variant="primary" className={classes.cartWidget}>
+    <Button variant="outline-dark" className={classes.cartWidget}>
       <CartIcon className={classes.cartIcon} />
       {getCartTotalQuantity()}
     </Button>

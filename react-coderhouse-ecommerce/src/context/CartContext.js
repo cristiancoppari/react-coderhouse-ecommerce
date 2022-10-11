@@ -8,8 +8,8 @@ const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const addItem = (item, quantity) => {
-    console.log("addItem");
-    console.log(quantity);
+    // console.log("addItem");
+    // console.log(quantity);
 
     if (isInCart(item.id)) {
       addQuantity(item, quantity);
@@ -19,7 +19,7 @@ const CartContextProvider = ({ children }) => {
   }
 
   const removeItem = (id) => {
-    console.log("removeItem");
+    // console.log("removeItem");
 
     const newCart = cart.filter((item) => item.id !== id);
     setCart(() => newCart);
@@ -34,7 +34,7 @@ const CartContextProvider = ({ children }) => {
   }
 
   const clear = () => {
-    console.log("clear");
+    // console.log("clear");
 
     setCart(() => []);
   }

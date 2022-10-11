@@ -13,9 +13,9 @@ const Item = ({ item }) => {
       <Card.Img variant="top" src={pictureUrl} />
       <Card.Body className={classes.cardBody}>
         <Card.Title>{title}</Card.Title>
-        <Card.Text>{price}</Card.Text>
+        <Card.Text>${price}</Card.Text>
         <LinkContainer to={`/item/${id}`}>
-          <Button>Ver más</Button>
+          <Button variant={"dark"}>Ver producto</Button>
         </LinkContainer>
       </Card.Body>
     </Card>

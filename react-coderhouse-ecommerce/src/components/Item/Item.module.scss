@@ -1,6 +1,14 @@
 .card {
   margin-bottom: 1rem;
 
+  border: none;
+
+  img {
+    width: 66.6%;
+
+    margin: 0 auto;
+  }
+
   .cardBody {
     text-align: center;
   }
