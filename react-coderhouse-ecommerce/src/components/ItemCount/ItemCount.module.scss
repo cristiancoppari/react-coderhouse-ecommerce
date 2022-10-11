@@ -1,0 +1,33 @@
+.productCount {
+  width: 10rem;
+
+  .productCountControllers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 1rem;
+
+    border: 1px black solid;
+    border-radius: 0.5rem;
+    overflow: hidden;
+
+    button {
+      padding: 0.5rem;
+      border: none;
+      // background-color: transparent;
+    }
+
+    p {
+      margin: 0 1rem;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+
+  // button {
+  //   margin-top: 1rem;
+  // }
+}
