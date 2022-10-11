@@ -8,10 +8,14 @@ import { CartContext } from "../../context/CartContext";
 import "./Cart.scss";
 
 const Cart = () => {
-  const { cart, increaseQuantityByOne, decreaseQuantityByOne, removeItem, clear } = useContext(CartContext);
+  const { cart, increaseQuantityByOne, decreaseQuantityByOne, removeItem, clear, getCartTotalPrice } = useContext(CartContext);
 
   const increaseHandler = (product) => {
-    increaseQuantityByOne(product);
+    if (product.quantity < product.stock) {
+      if (product.quantity < product.stock) {
+        increaseQuantityByOne(product);
+      }
+    }
   }
 
   const decreaseHandler = (product) => {
@@ -31,20 +35,20 @@ const Cart = () => {
               <img src={product.pictureUrl} alt="" />
 
               <div className="cart-item__detail">
-                <p>{product.title}</p>
-                <p>x{product.quantity}</p>
-                <p>${product.price}</p>
-                <p>Total producto: ${product.price * product.quantity}</p>
+                <p className="cart-item__detail__title">{product.title}</p>
+                <p className="cart-item__detail_quantiy">x{product.quantity}</p>
+                <p className="cart-item__detail__productPrice">${product.price}</p>
+                <p className="cart-item__detail__price">${product.price * product.quantity}</p>
               </div>
 
               <div className="cart-item__controls">
-                <Button variant="success" onClick={() => increaseHandler(product)}>
-                  <BsPlus />
-                </Button>
-                <Button variant="danger" onClick={() => decreaseHandler(product)}>
+                <Button variant="outline-dark" onClick={() => decreaseHandler(product)}>
                   <BsDash />
                 </Button>
-                <Button variant="danger" onClick={() => removeItem(product.id)}>
+                <Button variant="outline-dark" onClick={() => increaseHandler(product)}>
+                  <BsPlus />
+                </Button>
+                <Button variant="outline-dark" onClick={() => removeItem(product.id)}>
                   <BsFillTrashFill />
                 </Button>
               </div>
@@ -53,27 +57,45 @@ const Cart = () => {
         })
         }
 
+        <p className="cart__total"><strong>Total:</strong> ${getCartTotalPrice()}</p>
+
+        <div className="cart-item__btn-container">
+          <Button variant="dark" onClick={() => clear()}>Borrar carrito</Button>
+
+<<<<<<< Updated upstream
         <Button variant="dark" onClick={() => clear()}>Borrar carrito</Button>
-      </div>
+
+        <LinkContainer to="/checkout">
+          <Button>Terminar compra</Button>
+        </LinkContainer>
+=======
+          <LinkContainer to="/checkout">
+            <Button variant={"success"}>Terminar compra</Button>
+          </LinkContainer>
+        </div>
+>>>>>>> Stashed changes
+      </div >
     )
   }
 
-  return (
-    <Container>
-      <h1>Carrito</h1>
+return (
+  <Container className="cart__container" className="cart__container">
+    <h1>Carrito</h1>
 
-      {cart.length > 0
-        ?
-        <CartItemContainer />
-        :
-        <div>
-          <h2>No agregaste productos al carrito</h2>
+    {cart.length > 0
+      ?
+      <CartItemContainer />
+      :
+      <div className="cart__message">
+        <p>No agregaste productos al carrito</p>
 
-          {/* <Button>Ir a la tienda</Button> */}
-        </div>
-      }
-    </Container>
-  )
+        <LinkContainer to="/">
+          <Button variant={"dark"} variant={"dark"}>Ir a la tienda</Button>
+        </LinkContainer>
+      </div>
+    }
+  </Container>
+)
 }
 
 export default Cart

@@ -15,7 +15,7 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    getItem(Number(id))
+    getItem(id)
       .then((data) => {
         setProduct(data);
       })
@@ -26,18 +26,17 @@ const ItemDetailContainer = () => {
         setIsLoading(false);
       });
 
-    return () => {
-      setIsLoading(false);
-    }
+    // return () => {
+    //   setIsLoading(false);
+    // }
   }, [id]);
 
   return (
     <Container>
-      <h2>ItemDetailContainer</h2>
 
       {isLoading
         ?
-        <Spinner animation="border" role="status" />
+        <Spinner animation="border" role="status" className="d-block mx-auto my-5" />
         :
         <ItemDetail item={product}></ItemDetail>
       }

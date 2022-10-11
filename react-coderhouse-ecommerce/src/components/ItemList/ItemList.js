@@ -7,7 +7,7 @@ const ItemList = ({ items }) => {
 
   return (
     <Row>
-      {items.map((item) => {
+      {items && items.map((item) => {
         return (
           <Col key={item.id} xs={12} md={6} lg={4}>
             <Item item={item} />

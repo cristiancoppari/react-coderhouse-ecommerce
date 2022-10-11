@@ -37,10 +37,45 @@
 //   }
 // }
 
-.topNavbar {
+.top-navbar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 
-  padding: 1rem 0;
+  padding: 0.5rem 1rem;
+
+  &__buttons {
+    display: flex;
+
+    gap: 1rem;
+  }
+}
+
+.search-bar {
+  display: flex;
+  border: 1px black solid;
+  border-radius: 0.5rem;
+
+  overflow: hidden;
+
+  input {
+    border: none;
+
+    background-color: #eaeaea;
+
+    padding: 0 0.5rem;
+  }
+
+  button {
+    border: none;
+    border-radius: 0;
+  }
+}
+
+.logo {
+  width: 8rem;
+}
+
+.navbar {
+  background-color: orange;
 }

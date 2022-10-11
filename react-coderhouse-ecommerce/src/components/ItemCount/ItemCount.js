@@ -9,16 +9,12 @@ const ItemCount = ({ initial, stock, onAdd }) => {
   const onAddItemHandler = () => {
     if (items < stock) {
       setItems((prevState) => prevState + 1);
-    } else {
-      alert("No podes agregar mas productos porque no hay mas stock");
     }
   }
 
   const onRemoveItemHandler = () => {
     if (items > 1) {
       setItems((prevState) => prevState - 1);
-    } else {
-      alert("No podes restar mas productos porque sino no podes agregar nada al carrito!");
     }
   }
 
@@ -26,12 +22,12 @@ const ItemCount = ({ initial, stock, onAdd }) => {
     <div className={classes.productCount}>
 
       <div className={classes.productCountControllers}>
-        <Button variant="danger" onClick={onRemoveItemHandler}>-</Button>
+        <button onClick={onRemoveItemHandler}>-</button>
         <p>{items}</p>
-        <Button variant="success" onClick={onAddItemHandler}>+</Button>
+        <button onClick={onAddItemHandler}>+</button>
       </div>
 
-      <Button variant="primary" onClick={() => onAdd(items)}>Agregar al carrito</Button>
+      <Button variant="dark" onClick={() => onAdd(items)}>Agregar al carrito</Button>
     </div>
   )
 }

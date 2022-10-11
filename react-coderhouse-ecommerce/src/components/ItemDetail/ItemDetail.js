@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useContext } from 'react';
-import Container from "react-bootstrap/Container";
+import Badge from "react-bootstrap/Badge";
 import ItemCount from '../ItemCount/ItemCount';
 import Button from "react-bootstrap/Button";
 import { CartContext } from '../../context/CartContext';
@@ -10,41 +10,32 @@ import classes from "./ItemDetail.module.scss";
 
 const ItemDetail = ({ item }) => {
   const [quantity, setQuantity] = useState(0);
-  const { addItem, removeItem, clear } = useContext(CartContext);
+  const { addItem } = useContext(CartContext);
 
   const onAddHandler = (quantity) => {
     if (quantity) {
-      // alert(`Agregaste ${items} producto al carrito`);
       setQuantity(() => quantity);
       addItem(item, quantity);
-    } else {
-      alert("Debes agregar 1 producto carrito");
     }
   }
 
-  // const onAddToCartHandler = () => {
-  //   addItem(item, quantity);
-  // }
-
   return (
-    <Container>
-      <h1>ItemDetail</h1>
-
+    <>
       <div className={classes.itemDetail}>
         <div className={classes.itemDetailImage}>
           <img src={item.pictureUrl} alt="" />
         </div>
         <div className={classes.itemDetailContent}>
           <h2>{item.title}</h2>
-          <h4>{item.category}</h4>
+          <Badge bg={"dark"} className="mb-2">{item.category}</Badge>
           <p>{item.description}</p>
-          <p>{item.price}</p>
-          <p>{item.stock}</p>
+          <p className={classes.price}>${item.price}</p>
+          <p className={classes.stock}>Stock: {item.stock} unidad/es</p>
 
           {quantity
             ?
             <LinkContainer to={`/cart`}>
-              <Button>Ir al carrito</Button>
+              <Button variant={"dark"}>Ir al carrito</Button>
             </LinkContainer>
             :
             <>
@@ -53,8 +44,7 @@ const ItemDetail = ({ item }) => {
           }
         </div>
       </div>
-
-    </Container>
+    </>
   )
 }
 

@@ -1,5 +1,8 @@
 .itemDetail {
+  padding: 2rem 0;
+
   display: flex;
+  align-items: center;
 
   .itemDetailImage {
     flex: 1 1 50%;
@@ -11,5 +14,10 @@
 
   .itemDetailContent {
     flex: 1 1 50%;
+  }
+
+  .price,
+  .stock {
+    font-weight: bold;
   }
 }
