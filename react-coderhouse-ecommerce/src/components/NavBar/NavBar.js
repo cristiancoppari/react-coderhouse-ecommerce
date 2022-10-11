@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from "../CartWidget/CartWidget";
-import { Link, useMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { SearchContext } from "../../context/SearchContext";
 import Logo from "../../assets/logo.png";
@@ -13,8 +13,30 @@ import { FaSearch as SearchIcon } from "react-icons/fa";
 import "../NavBar/NavBar.scss";
 import { useState } from 'react';
 
+const navBarLinks = [
+  {
+    id: 1,
+    link: "/category/condimentos",
+    label: "Condimentos"
+  },
+  {
+    id: 2,
+    link: "/category/packs",
+    label: "Packs"
+  },
+  {
+    id: 3,
+    link: "/category/especias",
+    label: "Especias"
+  },
+  {
+    id: 4,
+    link: "/category/promociones",
+    label: "Promociones"
+  }
+]
+
 function NavBar() {
-  // const { cart } = useContext(CartContext);
   const { searchProductsHandler } = useContext(SearchContext);
 
   const [searchValue, setSearchValue] = useState("");
@@ -61,12 +83,15 @@ function NavBar() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto" as="ul">
               <NavDropdown title="Categorias" id="basic-nav-dropdown">
-                <LinkContainer to="/category/condimentos">
-                  <Nav.Link>Condimentos</Nav.Link>
-                </LinkContainer>
-                <LinkContainer to="/category/packs">
-                  <Nav.Link>Packs</Nav.Link>
-                </LinkContainer>
+                {
+                  navBarLinks.map((link) => {
+                    return (
+                      <LinkContainer key={link.id} to={link.link}>
+                        <Nav.Link>{link.label}</Nav.Link>
+                      </LinkContainer>
+                    )
+                  })
+                }
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

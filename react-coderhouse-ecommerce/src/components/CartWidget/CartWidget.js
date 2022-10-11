@@ -11,7 +11,7 @@ const CartWidget = () => {
   return (
     <Button variant="outline-dark" className={classes.cartWidget}>
       <CartIcon className={classes.cartIcon} />
-      {getCartTotalQuantity()}
+      {getCartTotalQuantity() !== 0 ? getCartTotalQuantity() : ""}
     </Button>
   )
 }

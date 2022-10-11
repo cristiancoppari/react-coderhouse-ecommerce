@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Container from "react-bootstrap/Container";
 import ItemList from "../ItemList/ItemList";
 import Spinner from "react-bootstrap/Spinner";
-import { getProducts, searchProducts } from "../../helpers/helpers";
+import { searchProducts } from "../../helpers/helpers";
 import { SearchContext } from '../../context/SearchContext';
 import classes from "./ItemListContainer.module.scss";
 
@@ -41,7 +41,6 @@ const ItemListContainer = () => {
 
     searchProducts(categoryId, searchedProducts)
       .then((data) => {
-        console.log("searchedProducts", data);
         setItems(() => data);
       })
       .catch((error) => {
